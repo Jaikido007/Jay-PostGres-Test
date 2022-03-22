@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+:root {
+  /* --pri-color: darkcyan;
+  --sec-color: cadetblue; */
+  --pri-color: steelblue;
+  --sec-color: lightblue;
+  --hoverTable: #d1daec;
+  --selectTable: #aab7d1;
+  /* --primary-color: black; */
+  --clock: var(--hoverTable);
+  --secondHand: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", "sans-serif";
+  background-color: var(--pri-color);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 5px;
+  max-width: 1200px;
+
+  /* transition: all 0.3s ease-in-out; */
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container h2 {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 0 10% auto;
+}
+
+.container a {
+  text-decoration: none; /* removes the hyperlink underline */
+  color: var(--sec-color);
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  background: var(--sec-color);
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+  color: black;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+#message {
+  color: yellow;
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.text1 {
+  float: left;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.text2 {
+  float: right;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.text3 {
+  font-size: 18px;
+  color: white;
+}
+
+.text3:before {
+  font-size: 18px;
+  color: var(--sec-color);
+  content: "Username ";
+}
+
+.form-control {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 300px;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px white solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: var(--sec-color);
+}
+
+.form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: var(--sec-color);
+  transform: translateY(-30px);
+}
+
+/* NAVIGATION SECTION */
+
+.container-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav {
+  position: fixed;
+  background-color: #222;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 7px 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav.active {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav.active a {
+  color: black;
+}
+
+.nav.active .container {
+  padding: 10px;
+}
+
+.nav a.current,
+.nav a:hover {
+  color: var(--pri-color);
+  font-weight: bold;
+}
+
+.nav .container-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* FOOTER SECTION */
+
+.footer {
+  position: fixed;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#removeAdminBtn,
+#makeAdminBtn,
+#deleteUserBtn {
+  position: relative;
+  cursor: pointer;
+  background: black;
+  width: auto;
+  color: white;
+  padding: 5px;
+  font-family: inherit;
+  font-size: 12px;
+  border: 0;
+  border-radius: 5px;
+}
+
+#deleteUserBtn:hover,
+#makeAdminBtn:hover,
+#removeAdminBtn:hover {
+  color: var(--pri-color);
+  font-weight: bold;
+}
+
+#deleteUserBtn:active,
+#makeAdminBtn:active,
+#removeAdminBtn:active {
+  transform: scale(0.98);
+}
+
+#removeAdminBtn:disabled,
+#makeAdminBtn:disabled,
+#deleteUserBtn:disabled {
+  color: rgba(165, 163, 163, 0.767);
+  cursor: not-allowed;
+}
+
+#removeAdminBtn:disabled:hover,
+#makeAdminBtn:disabled:hover,
+#deleteUserBtn:disabled:hover {
+  color: var(--pri-color);
+  text-decoration: line-through;
+  text-decoration-color: var(--sec-color);
+  cursor: not-allowed;
+}
+
+/* CLOCK SECTION */
+
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.needle {
+  background-color: var(--clock);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 65px;
+  width: 3px;
+  transform-origin: bottom center;
+  transition: all 0.5s ease-in;
+}
+
+.needle.hour {
+  transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.needle.minute {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+}
+
+.needle.second {
+  transform: translate(-50%, -100%) rotate(0deg);
+  height: 100px;
+  background-color: var(--secondHand);
+}
+
+.centre-point {
+  background-color: var(--secondHand);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.centre-point::after {
+  content: "";
+  background-color: var(--clock);
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.time {
+  font-size: 60px;
+}
+
+.date {
+  color: var(--sec-color);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.date .circle {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 18px;
+  transition: all 0.5s ease-in;
+  font-size: 12px;
+}

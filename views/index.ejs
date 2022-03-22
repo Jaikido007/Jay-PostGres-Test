@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/style.css" rel="stylesheet">
+    <title>Database Login</title>
+</head>
+<body>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="container-nav">
+            <h1 class="logo"><a href=/index></a>Welcome</h1>
+            <ul>
+                <li><a href='/register' class="">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Please Login</h1>
+
+        <form action="loggedin" method="POST">
+
+            <div class ="form-control">
+                <input type="text" id="username" name="username" required>
+                <label>Username</label>
+            </div> 
+
+            <div class="form-control">
+                <input type="password" id="password" name="password" required>
+                <label>Password</label>
+            </div>
+
+            <button class="btn" id="button">Login</button>
+
+            <p id="message"><%=message%></p>           
+
+
+            <p class="text">Don't have an account?
+                <a href="register">Register</a></p>
+
+            <!-- <p class="text1">
+                <a href="username">Forgot Username</a></p>
+
+            <p class="text2">
+                <a href="password">Forgot Password</a></p> -->
+
+
+
+        </form>
+
+        <div class="footer">
+            
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

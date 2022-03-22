@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/style.css" rel="stylesheet">
+    <title>Database Login</title>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="container-nav">
+            <h1 class="logo"><a href=/loggedin></a><%=uname%>'s Account</h1>
+            <ul>
+                <li><a href='/index' class="">Logout</a></li>
+                <li><a href='/edituser'>Edit User</a></li>
+                <li><a href='/admin'>Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Change Password</h1>
+
+        <form action="edituser" method="POST">
+
+            <div class ="form-control">
+                <!-- <input type="text" id="username" name="username" value="<%=uname%>" required> -->
+                <p class ="text3"> <%=uname%></p>
+            </div> 
+
+            <div class="form-control">
+            <input type="password" id="password" name="password" value="<%=password%>" required>
+            <label>Password</label>
+            </div>
+
+            <button class="btn" id="button">Submit</button>        
+
+        </form>
+
+    </div>
+
+    <div class="footer">
+            
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
