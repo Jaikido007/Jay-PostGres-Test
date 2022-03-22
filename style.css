@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
 :root {
-  --icon-color: rgb(8, 70, 121);
-  --link-color: #f09819;
+  /* --pri-color: darkcyan;
+  --sec-color: cadetblue; */
   --pri-color: steelblue;
   --sec-color: lightblue;
   --hoverTable: #d1daec;
   --selectTable: #aab7d1;
+  /* --primary-color: black; */
   --clock: var(--hoverTable);
   --secondHand: #e74c3c;
-  --clock-grad-pri1: #050505;
-  --clock-grad-pri2: #525150;
-  --clock-grad-sec1: #f6f7f8ab;
-  --clock-grad-sec2: #c0ccd48e;
 }
 
 * {
@@ -21,7 +18,7 @@
 
 body {
   font-family: "Raleway", "sans-serif";
-  background-color: var(--pri-color);
+  background: linear-gradient(90deg, #c7c5f4, #776bcc);
   color: white;
   display: flex;
   flex-direction: column;
@@ -31,55 +28,18 @@ body {
   margin: 0;
 }
 
-/* SHAPES SECTION */
-
-.bg-shapes {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  z-index: -1;
-}
-.bg-shapes .shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-.shape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-.shape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-}
-
-/* CONTAINER SECTION */
-
 .container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 5px;
   max-width: 1200px;
-}
 
-.container-welcome {
-  height: 100%;
+  /* transition: all 0.3s ease-in-out; */
 }
 
 .container h1 {
   text-align: center;
   margin-bottom: 30px;
-}
-
-h2 {
-  font-size: 80px;
-  text-align: center;
-  margin-bottom: 10px;
-  padding: 10% 10%;
-  text-transform: capitalize;
 }
 
 .container h2 {
@@ -90,20 +50,178 @@ h2 {
 }
 
 .container a {
-  text-decoration: none;
+  text-decoration: none; /* removes the hyperlink underline */
   color: var(--sec-color);
 }
+
+/* NEW CSS START */
+
+.screen {
+  background: linear-gradient(90deg, #5d54a4, #7c78b8);
+  position: relative;
+  height: 600px;
+  width: 360px;
+  box-shadow: 0px 0px 24px #5c5696;
+}
+
+.screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+}
+
+.screen__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+}
+
+.screen__background__shape {
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.screen__background__shape1 {
+  height: 520px;
+  width: 520px;
+  background: #fff;
+  top: -50px;
+  right: 120px;
+  border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+  height: 220px;
+  width: 220px;
+  background: #6c63ac;
+  top: -172px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape3 {
+  height: 540px;
+  width: 190px;
+  background: linear-gradient(270deg, #5d54a4, #6a679e);
+  top: -24px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape4 {
+  height: 400px;
+  width: 200px;
+  background: #7e7bb9;
+  top: 420px;
+  right: 50px;
+  border-radius: 60px;
+}
+
+.login {
+  width: 320px;
+  padding: 30px;
+  padding-top: 156px;
+}
+
+.login__field {
+  padding: 20px 0px;
+  position: relative;
+}
+
+.login__icon {
+  position: absolute;
+  top: 30px;
+  color: #7875b5;
+}
+
+.login__input {
+  border: none;
+  border-bottom: 2px solid #d1d1d4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: 0.2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+  outline: none;
+  border-bottom-color: #6a679e;
+}
+
+.login__submit {
+  background: #fff;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 26px;
+  border: 1px solid #d4d3e8;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #4c489d;
+  box-shadow: 0px 2px 2px #5c5696;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+  border-color: #6a679e;
+  outline: none;
+}
+
+.button__icon {
+  font-size: 24px;
+  margin-left: auto;
+  color: #7875b5;
+}
+
+.social-login {
+  position: absolute;
+  height: 140px;
+  width: 160px;
+  text-align: center;
+  bottom: 0px;
+  right: 0px;
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-login__icon {
+  padding: 20px 10px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0px 0px 8px #7875b5;
+}
+
+.social-login__icon:hover {
+  transform: scale(1.5);
+}
+
+/* END OF NEW CSS */
 
 .btn {
   cursor: pointer;
   display: inline-block;
   width: 100%;
-  background-image: linear-gradient(
-    144deg,
-    var(--pri-color),
-    var(--sec-color) 50%,
-    var(--pri-color)
-  );
+  background: var(--sec-color);
   padding: 15px;
   font-family: inherit;
   font-size: 16px;
@@ -145,29 +263,6 @@ h2 {
   font-size: 18px;
   color: var(--sec-color);
   content: "Username ";
-}
-
-.my-form {
-  height: 480px;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: relative;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 35px;
-}
-
-.login__icon,
-.fa-solid {
-  position: absolute;
-  top: 30px;
-  right: 0px;
-  color: rgb(70, 105, 180);
 }
 
 .form-control {
@@ -221,16 +316,11 @@ h2 {
 
 .nav {
   position: fixed;
-  background-color: var(--icon-color);
+  background-color: #5d54a4;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-}
-
-.logo li {
-  display: flex;
-  list-style-type: none;
+  transition: all 0.3s ease-in-out;
 }
 
 .nav ul {
@@ -262,7 +352,7 @@ h2 {
 
 .nav a.current,
 .nav a:hover {
-  color: var(--link-color);
+  color: var(--pri-color);
   font-weight: bold;
 }
 
@@ -278,7 +368,7 @@ h2 {
 
 .footer {
   position: fixed;
-  background-color: var(--icon-color);
+  background-color: #5d54a4;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -295,7 +385,7 @@ h2 {
 #deleteUserBtn {
   position: relative;
   cursor: pointer;
-  background: var(--icon-color);
+  background: #5d54a4
   width: auto;
   color: white;
   padding: 5px;
@@ -308,7 +398,7 @@ h2 {
 #deleteUserBtn:hover,
 #makeAdminBtn:hover,
 #removeAdminBtn:hover {
-  color: var(--link-color);
+  color: var(--pri-color);
   font-weight: bold;
 }
 
@@ -321,16 +411,16 @@ h2 {
 #removeAdminBtn:disabled,
 #makeAdminBtn:disabled,
 #deleteUserBtn:disabled {
-  color: rgb(104, 103, 103);
+  color: rgba(165, 163, 163, 0.767);
   cursor: not-allowed;
 }
 
 #removeAdminBtn:disabled:hover,
 #makeAdminBtn:disabled:hover,
 #deleteUserBtn:disabled:hover {
-  color: rgb(163, 3, 3);
+  color: var(--pri-color);
   text-decoration: line-through;
-  text-decoration-color: red;
+  text-decoration-color: var(--sec-color);
   cursor: not-allowed;
 }
 
@@ -345,14 +435,14 @@ h2 {
 
 .clock {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
 }
 
 .needle {
   background-color: var(--clock);
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   height: 65px;
   width: 3px;
@@ -362,17 +452,16 @@ h2 {
 
 .needle.hour {
   transform: translate(-50%, -100%) rotate(0deg);
-  height: 175px;
 }
 
 .needle.minute {
   transform: translate(-50%, -100%) rotate(0deg);
-  height: 270px;
+  height: 100px;
 }
 
 .needle.second {
   transform: translate(-50%, -100%) rotate(0deg);
-  height: 270px;
+  height: 100px;
   background-color: var(--secondHand);
 }
 
@@ -381,7 +470,7 @@ h2 {
   width: 10px;
   height: 10px;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -399,19 +488,13 @@ h2 {
   border-radius: 50%;
 }
 
-.datetime {
-  position: absolute;
-  bottom: 50px;
-}
-
 .time {
-  position: relative;
-  font-size: 100px;
+  font-size: 60px;
 }
 
 .date {
   color: var(--sec-color);
-  font-size: 20px;
+  font-size: 14px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
@@ -420,126 +503,12 @@ h2 {
   background-color: whitesmoke;
   color: black;
   border-radius: 50%;
-  height: 28px;
-  width: 28px;
+  height: 18px;
+  width: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 28px;
+  line-height: 18px;
   transition: all 0.5s ease-in;
-  font-size: 20px;
-}
-
-.clock-shapes {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  z-index: -1;
-  font-size: 1rem;
-}
-.clock-shapes .clock-shape {
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  border-radius: 50%;
-  font-size: 1rem;
-}
-
-.clock-shapes h1 {
-  color: steelblue;
-  font-size: 35px;
-  position: inline;
-  text-align: center;
-  margin: auto;
-}
-/* 12 */
-.clock-shape:first-child {
-  background: linear-gradient(
-    to bottom,
-    var(--clock-grad-pri1),
-    var(--clock-grad-pri2)
-  );
-  top: 5px;
-  right: 190px;
-}
-/* 1 */
-.clock-shape:nth-child(2) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  top: 47px;
-  right: 39px;
-}
-/* 2 */
-.clock-shape:nth-child(3) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  top: 157px;
-  right: -71px;
-}
-/* 3 */
-.clock-shape:nth-child(4) {
-  background: linear-gradient(
-    to left,
-    var(--clock-grad-pri1),
-    var(--clock-grad-pri2)
-  );
-  top: 310px;
-  right: -107px;
-}
-/* 4 */
-.clock-shape:nth-child(5) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  top: 465px;
-  right: -62px;
-}
-/* 5 */
-.clock-shape:nth-child(6) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  top: 570px;
-  right: 53px;
-}
-/* 6 */
-.clock-shape:nth-child(7) {
-  background: linear-gradient(
-    to top,
-    var(--clock-grad-pri1),
-    var(--clock-grad-pri2)
-  );
-  left: 173px;
-  bottom: -130px;
-}
-/* 7 */
-.clock-shape:nth-child(8) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  left: 20px;
-  bottom: -81px;
-}
-/* 8 */
-.clock-shape:nth-child(9) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  left: -79px;
-  bottom: 37px;
-}
-/* 9 */
-.clock-shape:nth-child(10) {
-  background: linear-gradient(
-    to right,
-    var(--clock-grad-pri1),
-    var(--clock-grad-pri2)
-  );
-  left: -107px;
-  bottom: 191px;
-}
-/* 10 */
-.clock-shape:nth-child(11) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  left: -55px;
-  bottom: 341px;
-}
-/* 11 */
-.clock-shape:nth-child(12) {
-  background: linear-gradient(var(--clock-grad-sec1), var(--clock-grad-sec2));
-  left: 60px;
-  bottom: 435px;
+  font-size: 12px;
 }

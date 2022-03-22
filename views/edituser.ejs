@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="images/King_Jay.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="css/style.css" rel="stylesheet">
     <title>Database Login</title>
@@ -12,27 +13,32 @@
 
     <nav class="nav">
         <div class="container-nav">
-            <h1 class="logo"><a href=/loggedin></a><%=uname%>'s Account</h1>
+            <h1 class="logo"><li><a href='/index'><%=uname%>'s Account</a></li></h1>
             <ul>
-                <li><a href='/index' class="">Logout</a></li>
                 <li><a href='/edituser'>Edit User</a></li>
                 <li><a href='/admin'>Admin</a></li>
+                <li><a href='/index' class="">Logout</a></li>
             </ul>
         </div>
     </nav>
 
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
     <div class="container">
 
-        <h1>Change Password</h1>
+        <form class='my-form' action="edituser" method="POST">
 
-        <form action="edituser" method="POST">
+            <h1>Change Password</h1>
 
             <div class ="form-control">
-                <!-- <input type="text" id="username" name="username" value="<%=uname%>" required> -->
                 <p class ="text3"> <%=uname%></p>
             </div> 
 
             <div class="form-control">
+                <i class="fa-solid fa-lock-open"></i>
             <input type="password" id="password" name="password" value="<%=password%>" required>
             <label>Password</label>
             </div>

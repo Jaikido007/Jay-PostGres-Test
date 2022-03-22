@@ -4,36 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image" href="images/King_Jay.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css"/>
+
     <title>Database Registration</title>
 </head>
-<body>
-</head>
+
 <body>
 
     <nav class="nav">
         <div class="container-nav">
-            <h1 class="logo"><a href=/index></a>Welcome</h1>
+            <h1 class="logo"><li><a href='/index'>Welcome</a></li></h1>
             <ul>
                 <li><a href='/index' class="">Login</a></li>
             </ul>
         </div>
     </nav>
 
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
     <div class="container">
 
-        <h1>Please Register</h1>
+        <form class='my-form' action="register2" method="POST">
 
-        <form action="register2" method="POST">
+            <h1>Please Register</h1>
+
             <div class ="form-control">
-            <input type="text" id="username" name="username" required>
-            <label>Username</label>
+                <i class="login__icon fas fa-user"></i>
+                <input type="text" id="username" name="username" required>
+                <label>Username</label>
             </div> 
 
             <div class="form-control">
-            <input type="password" id="password" name="password" required>
-            <label>Password</label>
+                <i class="login__icon fas fa-lock"></i>
+                <input type="password" id="password" name="password" required>
+                <label>Password</label>
             </div>
 
             <button class="btn">Submit</button>
@@ -42,12 +52,7 @@
 
             <p class="text">Already have an account?
                 <a href="index">Login</a></p>
-
-                <!-- <p class="text1">
-                    <a href="username">Forgot Username</a></p>
-
-            <p class="text2">
-                <a href="password">Forgot Password</a></p> -->
+                
         </form>
 
     </div>

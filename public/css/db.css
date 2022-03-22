@@ -4,6 +4,8 @@
   --pri-color: steelblue;
   --sec-color: lightblue;
   --highlightYellow: rgb(146, 196, 219);
+  --icon-color: rgb(8, 70, 121);
+  --link-color: #f09819;
 }
 
 tr {
@@ -13,6 +15,23 @@ tr {
 td {
   color: black;
 }
+
+.dbform {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 30px 35px;
+}
+
+/* .... */
 
 table.dataTable {
   width: 100%;
@@ -380,9 +399,9 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
-  color: var(--sec-color) !important;
+  color: rgb(129, 3, 3) !important;
   text-decoration: line-through !important;
-  text-decoration-color: var(--selectTable) !important;
+  text-decoration-color: red !important;
   cursor: not-allowed;
   border: 1px solid transparent;
   background: transparent;
@@ -392,7 +411,7 @@ table.dataTable td {
 /* PREV & NEXT BUTTONS */
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-  color: black !important;
+  color: var(--link-color) !important;
   border: none;
   border-radius: 10%;
   /* background-color: var(--sec-color); */

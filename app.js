@@ -171,9 +171,7 @@ function processRegister(params, res){
 }
 
 function editUserProfile(req, res){
-    if(myUser.getUid != '') {
-        res.render('index', {message: ''});
-    } else { 
+    const uid = myUser.getUid;
 
     // let uid = req.cookies.uid;
     console.log(uid);
@@ -188,12 +186,12 @@ function editUserProfile(req, res){
                 res.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password});
             }
         })
-}}
+}
 
 function updateEditUser(req, params, res) {
 
-    let uid = myUser.getUid;
-    let u = myUser.getUsername;
+    const uid = myUser.getUid;
+    const u = myUser.getUsername;
     // let uid = req.cookies.uid;
     // let u = req.cookies.username;
     const p = params.password;
