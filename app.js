@@ -116,8 +116,10 @@ function processLoggedin(params, res) {
         if (error) {
             console.log(error);
             res.status(400).send(error); 
-        } 
-        else {
+        } else {
+            if (result.rowCount ==0) {
+                res.render('index', {message: 'Invalid Username or Password'});
+            } else {
             if (result.rows[0].password === p){
                 myUser.setUid = result.rows[0].id;
                 myUser.setUsername = u;
@@ -138,6 +140,7 @@ function processLoggedin(params, res) {
                 res.render('index', {message: 'Invalid Username or Password'});
         }
         }
+    }
         });
 } 
 
@@ -158,11 +161,7 @@ function processRegister(params, res){
     client.query(`INSERT INTO ${tableName} (username, password) VALUES ('${u}', '${p}')`,
     (error, result) => {
         if(error) {
-        
-        if (error.constraint == 'unique_user') {
-            // console.log(error.code);
-            res.render('register', {message: 'Username already taken'})
-        }
+       
         console.log(error);
         // res.status(500).send(error);
     }

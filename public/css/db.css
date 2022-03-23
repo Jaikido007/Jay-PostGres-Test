@@ -9,7 +9,7 @@
 }
 
 tr {
-  background-color: black;
+  background-color: var(--icon-color);
   color: white;
 }
 td {
