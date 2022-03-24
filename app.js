@@ -161,7 +161,11 @@ function processRegister(params, res){
     client.query(`INSERT INTO ${tableName} (username, password) VALUES ('${u}', '${p}')`,
     (error, result) => {
         if(error) {
-       
+        
+        if (error.constraint == 'unique_user') {
+            // console.log(error.code);
+            res.render('register', {message: 'Sorry, that username already exists'})
+        }
         console.log(error);
         // res.status(500).send(error);
     }

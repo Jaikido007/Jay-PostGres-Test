@@ -16,6 +16,23 @@ td {
   color: black;
 }
 
+#example {
+  margin-left: 25px;
+}
+
+#example_length {
+  display: none;
+}
+
+#example_info {
+  margin-top: 50px;
+}
+
+#example_filter label input {
+  position: relative;
+  margin-right: 25px;
+}
+
 .dbform {
   height: 100%;
   width: 100%;
@@ -446,7 +463,6 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_processing,
 .dataTables_wrapper .dataTables_paginate {
-  margin-top: 3.5%;
   margin-bottom: 2.5%;
   color: white;
 }

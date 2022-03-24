@@ -1,95 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <title>Admin</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>KingJay Admin</title>
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" /> -->
-    <link href="css/db.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/db.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image" href="images/King_Jay.png" />
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="js/script.js"></script>
 
-      <script>
-        $(document).ready(function () {
-            var table = $('#example').DataTable();
-            $('#example tbody').on('click', 'tr', function () {
-                if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
-                }
-                else {
-                    table.$('tr.selected').removeClass('selected');
-                    $(this).addClass('selected');
-                }
-            });
+    <script>
+      $(document).ready(function () {
+        var table = $("#example").DataTable();
+        $("#example tbody").on("click", "tr", function () {
+          if ($(this).hasClass("selected")) {
+            $(this).removeClass("selected");
+          } else {
+            table.$("tr.selected").removeClass("selected");
+            $(this).addClass("selected");
+          }
         });
+      });
     </script>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <nav class="nav">
-        <div class="container-nav">
-            <h1 class="logo"><li><a href='/loggedout'><%=uname%>'s Account</a></li></h1>
-            <ul>
-                <li><a href='/edituser'>Edit User</a></li>
-                <li><a href='/admin'>Admin</a></li>
-                <li><a href='/loggedout' class="">Logout</a></li>
-            </ul>
-        </div>
+      <div class="container-nav">
+        <h1 class="logo">
+          <li><a href="/loggedout"><%=uname%>'s Account</a></li>
+        </h1>
+        <ul>
+          <li><a href="/edituser">Edit User</a></li>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="/loggedout" class="">Logout</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="bg-shapes">
-        <div class="shape"></div>
+      <div class="shape"></div>
     </div>
 
     <div class="container">
-
-    <form class='dbform'>
-        <table id="example" class="display" style="width:80%">
-            <thead>
+      <form class="dbform">
+        <table id="example" class="display" style="width: 80%">
+          <thead>
             <tr>
-            <th>ID</th><th>Username</th><th>Password</th><th>Administrator</th>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Administrator</th>
             </tr>
-        </thead>
-            <% for (var i = 0; i < data.length; i++) { %>
-            <tr>
+          </thead>
+          <% for (var i = 0; i < data.length; i++) { %>
+          <tr>
             <td><%= data[i].id %></td>
             <td><%= data[i].username %></td>
             <td><%= data[i].password %></td>
             <td><%= data[i].isadmin %></td>
-            </tr>    
-            <% } %>
+          </tr>
+          <% } %>
         </table>
-        
-        <p>The selected user is currently: <label id ='userName'></label></p>
-    </form>
-     
-     </div>
 
-     <div class="footer">
-        <form action = 'deleteUser' method ='POST' id = 'deleteUser'>
-            <input type = 'hidden' name = 'hiddenId' id = 'hiddenId'>
-            <button type = 'submit' id = 'deleteUserBtn'>DELETE USER</button>  
-        </form>
+        <p>The selected user is currently: <label id="userName"></label></p>
+      </form>
+    </div>
 
-        <form action = 'makeAdmin' method ='POST' id = 'makeAdmin'>
-            <input type = 'hidden' name = 'hiddenAdminId' id = 'hiddenAdminId'> 
-            <button type = 'submit' id = 'makeAdminBtn'>MAKE ADMIN</button> 
-        </form>
+    <div class="footer">
+      <form action="deleteUser" method="POST" id="deleteUser">
+        <input type="hidden" name="hiddenId" id="hiddenId" />
+        <button type="submit" id="deleteUserBtn">DELETE USER</button>
+      </form>
 
-        <form action = 'removeAdmin' method ='POST' id = 'removeAdmin'>
-            <input type = 'hidden' name = 'hiddenRemoveAdminId' id = 'hiddenRemoveAdminId'>
-            <button type = 'submit' id = 'removeAdminBtn'>REMOVE ADMIN</button>      
-        </form>
+      <form action="makeAdmin" method="POST" id="makeAdmin">
+        <input type="hidden" name="hiddenAdminId" id="hiddenAdminId" />
+        <button type="submit" id="makeAdminBtn">MAKE ADMIN</button>
+      </form>
+
+      <form action="removeAdmin" method="POST" id="removeAdmin">
+        <input
+          type="hidden"
+          name="hiddenRemoveAdminId"
+          id="hiddenRemoveAdminId"
+        />
+        <button type="submit" id="removeAdminBtn">REMOVE ADMIN</button>
+      </form>
     </div>
 
     <script src="js/database.js"></script>
     <!-- <script src="js/logout.js"></script> -->
-
-</body>
+  </body>
 </html>
