@@ -173,7 +173,7 @@ function editUserProfile(req, res){
     const uid = myUser.getUid;
 
     // let uid = req.cookies.uid;
-    console.log(uid);
+    console.table(myUser);
     let tableName = 'mytable';
     let query = `SELECT * FROM ${tableName} WHERE id = ${uid}`;
     client.query(query,
@@ -182,10 +182,24 @@ function editUserProfile(req, res){
                 console.log(error);
                 res.status(500).send(error);
             } else {
-                res.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password});
+                if(myUser.getIsadmin == 'Y') {
+                    res.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password, admin: '<a href="/admin">Admin</a>'});
+                } else {
+                    res.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password, admin: ''});
+                }
+                
             }
         })
 }
+// if (result.rows[0].isadmin === 'Y') {
+//     res.render('loggedin', {uname: u, admin: '<a href="/admin">Admin</a>'});
+// } else {
+//     res.render('loggedin', {uname: u, admin:''});} 
+
+// }
+
+
+
 
 function updateEditUser(req, params, res) {
 
