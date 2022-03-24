@@ -10,7 +10,7 @@ labels.forEach(label => {
         .join('')
 })
 
-// CLOCK
+// CLOCK SECTION
 
 const hourEl = document.querySelector('.hour')
 const minuteEl = document.querySelector('.minute')
@@ -49,7 +49,22 @@ setTime()
 
 setInterval(setTime, 1000)
 
-// CHECKING COOKIES
+// SHOW PASSWORD
+
+function myFunction() {
+    const x = document.getElementById("password");
+    const y = document.getElementById("togglePassword")
+    const closed = 'fa-eye-slash'
+    if (x.type === "password") {
+      x.type = "text";
+      y.classList.add(closed)
+    } else {
+      x.type = "password";
+      y.classList.remove(closed)
+    }
+  }
+
+
 
 
 

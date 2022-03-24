@@ -16,7 +16,7 @@
 
     <nav class="nav">
         <div class="container-nav">
-            <h1 class="logo"><li><a href='/index'>Welcome</a></li></h1>
+            <h1 class="logo"><li><a href='/loggedout'>Welcome</a></li></h1>
             <ul>
                 <li><a href='/register' class="">Register</a></li>
             </ul>
@@ -42,10 +42,11 @@
 
             <div class="form-control">
                 <i class="login__icon fas fa-lock"></i>
+                <i class="eye__icon far fa-eye" id="togglePassword" onclick="myFunction()"></i>
                 <input type="password" id="password" name="password" required>
                 <label>Password</label>
             </div>
-            
+         
             <button class="btn">Login</button>
 
             <p id="message"><%=message%></p>           
@@ -56,6 +57,8 @@
         </form>
 
         <div class="footer">
+            
+            </div>
             
         </div>
 
