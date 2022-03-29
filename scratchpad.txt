@@ -1,0 +1,31 @@
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+res.cookie('username', u);
+res.cookie("uid", result.rows[0].id);
+res.render('loggedin', {uname: u});
+res.cookie('isadmin', result.rows[0].isadmin);
+
+res.clearCookie('username');
+res.clearCookie('uid');
+res.clearCookie('isadmin');
+
+let uid = req.cookies.uid;
+
+let uid = req.cookies.uid;
+let u = req.cookies.username;
+
+
+APP.GET TEST PAGE SECTION-----
+
+    app.get('/test', (req, res) => {
+    client.query('SELECT * FROM "mytable"', 
+    (error, result) => {
+        if (error) {
+            console.log(error);
+            res.status(400).send(error);
+        }
+        // res.status(200).send(result.rows);
+    });
+})
