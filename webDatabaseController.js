@@ -1,9 +1,9 @@
 const client = require('./db');
 
-const createDbUser = ({username, password}) => {
+const createDbUser = ({username, password, result}) => {
     let tableName = 'mytable';
     return client.query(
-        `INSERT INTO ${tableName} (username, password) VALUES ('${username}', '${password}')`,
+        `INSERT INTO ${tableName} (username, password, encryptedpw) VALUES ('${username}', '${password}', '${result}')`,
     );
 }
 

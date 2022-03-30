@@ -1,5 +1,6 @@
 const {createDbUser, getUsernameAndPassword, getUserProfileDetails, updateUserDetails, getAdminUsers, deleteUser, makeUserAdmin, removeUserAdmin} = require('./webDatabaseController.js')
 const appUser = require('./user.js')
+const {encryptPassword, checkEncryptedPassword} = require('./passwords.js')
 let myUser = new appUser;
 
 // PROCESS SECTION
@@ -7,16 +8,22 @@ let myUser = new appUser;
 const processRegisterUser = (request, response) => {
     let username = request.body.username;
     let password = request.body.password;
-    console.log(username + password);
-    createDbUser({username, password})
-    .then(() => response.render('index', {message: ''}))
+    encryptPassword(password)
+    .then(result => {
+        createDbUser({username, password, result})
+        .then(() => response.render('index', {message: ''}))
+        .catch(error => {
+            if (error.constraint == 'unique_user') {
+                response.render('register', {message: 'Sorry, that username already exists'})
+            } else {
+                response.status(500).send(error);
+            }
+        })
+    })
     .catch(error => {
-        if (error.constraint == 'unique_user') {
-            response.render('register', {message: 'Sorry, that username already exists'})
-        } else {
-            response.status(500).send("error");
-        }
-    });
+        response.status(500).send(error);
+    })
+   
 };
 
 const processLoginUser = (request, response) => {
@@ -44,7 +51,6 @@ const processLoginUser = (request, response) => {
                 }
             }
         })
-    // })
     .catch(() => {
         response.render('index', {message: 'Invalid Username or Password'});
     })
