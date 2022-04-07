@@ -27,7 +27,7 @@ const updateUserDetails = ({uid, password, result}) => {
     console.log(result)
     return client.query(
         `UPDATE "${tableName}" SET (encryptedpw, password) = ('${result}', '${password}') WHERE id = ${uid}` 
-        // AND encryptedpw != '${result}'
+        // AND encryptedpw != '${result}' ---
 
     );
 }

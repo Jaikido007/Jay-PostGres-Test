@@ -6,7 +6,7 @@ const superUser = require('./superuser')
 let myUser = new appUser;
 let mySuperUser = new superUser;
 
-// PROCESS SECTION
+// PROCESS SECTION ---
 
 const processRegisterUser = (request, response) => {
     let username = request.body.username;

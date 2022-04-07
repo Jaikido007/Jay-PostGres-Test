@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
-// APP.POST SECTION
+// APP.POST SECTION ---
 
 app.post('/register', webController.processRegisterUser);
 app.post('/loggedin',  webController.processLoginUser);
