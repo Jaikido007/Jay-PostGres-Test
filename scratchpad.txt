@@ -29,3 +29,7 @@ APP.GET TEST PAGE SECTION-----
         // res.status(200).send(result.rows);
     });
 })
+
+
+
+value="<%=password%>"

@@ -101,7 +101,7 @@ const processUpdateEditUser = (request, response) => {
     encryptPassword(password)
     .then(result => { 
         console.log(result)
-        updateUserDetails({uid, result})
+        updateUserDetails({uid, password, result})
         .then(() => response.render('index', {message: ''}))
         .catch(() => response.status(500).send('error'));
 }) .catch(() => response.status(500).send('error'));

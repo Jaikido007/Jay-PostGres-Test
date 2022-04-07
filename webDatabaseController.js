@@ -22,11 +22,11 @@ const getUserProfileDetails = ({uid}) => {
 
 }
 
-const updateUserDetails = ({uid, result}) => {
+const updateUserDetails = ({uid, password, result}) => {
     let tableName = 'mytable';
     console.log(result)
     return client.query(
-        `UPDATE "${tableName}" SET encryptedpw = '${result}' WHERE id = ${uid}` 
+        `UPDATE "${tableName}" SET (encryptedpw, password) = ('${result}', '${password}') WHERE id = ${uid}` 
         // AND encryptedpw != '${result}'
 
     );
@@ -35,7 +35,7 @@ const updateUserDetails = ({uid, result}) => {
 const getAdminUsers = () => {
     let tableName = 'mytable';
     return client.query(
-        `SELECT * FROM "${tableName}"`
+        `SELECT id, username, password, isadmin, '********' AS password FROM "${tableName}"`
     );
 }
 
