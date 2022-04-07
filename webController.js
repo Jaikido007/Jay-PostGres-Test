@@ -1,7 +1,10 @@
 const {createDbUser, getUsernameAndPassword, getUserProfileDetails, updateUserDetails, getAdminUsers, deleteUser, makeUserAdmin, removeUserAdmin} = require('./webDatabaseController.js')
 const appUser = require('./user.js')
 const {encryptPassword, checkEncryptedPassword} = require('./passwords.js')
+const {dbErrorHandle} = require('./db_error_handling')
+const superUser = require('./superuser')
 let myUser = new appUser;
+let mySuperUser = new superUser;
 
 // PROCESS SECTION
 
@@ -13,13 +16,10 @@ const processRegisterUser = (request, response) => {
         createDbUser({username, password, result})
         .then(() => response.render('index', {message: ''}))
         .catch(error => {
-            if (error.constraint == 'unique_user') {
-                response.render('register', {message: 'Sorry, that username already exists'})
-            } else {
-                response.status(500).send(error);
-            }
+            let dbError = dbErrorHandle(error.constraint);
+            response.render('register', {message: dbError})
         })
-    })
+    }) //WHY?
     .catch(error => {
         response.status(500).send(error);
     })
@@ -29,26 +29,35 @@ const processRegisterUser = (request, response) => {
 const processLoginUser = (request, response) => {
     let username = request.body.username;
     let password = request.body.password;
+    
     getUsernameAndPassword ({username})
     .then((result) => {
+        let data = result;
         if (result.rowCount ==0) {
             response.render('index', {message: 'Invalid Username or Password'});
         } else {
-            if (result.rows[0].password === password){
-                myUser.setUid = result.rows[0].id;
+            let encryptedpw = result.rows[0].encryptedpw;
+            checkEncryptedPassword({password, encryptedpw})
+            .then(result => {
+                console.log(result)
+            if (result === true){
+                myUser.setUid = data.rows[0].id;
+                mySuperUser.setUid = data.rows[0].id;
                 myUser.setUsername = username;
-                myUser.setPassword = result.rows[0].password;
-                myUser.setIsadmin = result.rows[0].isadmin;
-                console.table(myUser);
-                if (result.rows[0].isadmin === 'Y') {
+                myUser.setPassword = password;
+                myUser.setIsadmin = data.rows[0].isadmin;
+                console.table(mySuperUser);
+                if (myUser.getIsadmin === 'Y') {
                     response.render('loggedin', {uname: username, admin: '<a href="/admin">Admin</a>'});
                 } else {
                     response.render('loggedin', {uname: username, admin:''});
-                } 
+                }  
 
         } else {
             response.render('index', {message: 'Invalid Username or Password'});
                 }
+            })
+            // .catch(() => response.status(500).send('error123'))
             }
         })
     .catch(() => {
@@ -77,9 +86,9 @@ const processEditUser = (request, response) => {
     getUserProfileDetails({uid})
     .then((result) => {
         if(myUser.getIsadmin == 'Y') {
-            response.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password, admin: '<a href="/admin">Admin</a>'});
+            response.render('edituser', {uname: result.rows[0].username, password: result.rows[0].encryptedpw, admin: '<a href="/admin">Admin</a>'});
         } else {
-            response.render('edituser', {uname: result.rows[0].username, password: result.rows[0].password, admin: ''});
+            response.render('edituser', {uname: result.rows[0].username, password: result.rows[0].encryptedpw, admin: ''});
         }
     })
     .catch(() => response.render('index', {message: 'Permission denied!'}));
@@ -89,9 +98,13 @@ const processUpdateEditUser = (request, response) => {
     let uid = myUser.getUid;
     let username = myUser.getUsername;
     let password = request.body.password;
-    updateUserDetails({uid, password})
-    .then(() => response.render('index', {message: ''}))
-    .catch(() => response.status(500).send('error'));
+    encryptPassword(password)
+    .then(result => { 
+        console.log(result)
+        updateUserDetails({uid, result})
+        .then(() => response.render('index', {message: ''}))
+        .catch(() => response.status(500).send('error'));
+}) .catch(() => response.status(500).send('error'));
 }
 
 const processAdmin = (request, response) => {

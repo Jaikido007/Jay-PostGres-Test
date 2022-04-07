@@ -2,12 +2,13 @@ const bcrypt = require('bcrypt');
 const saltRounds = 4;
 
 const encryptPassword = (password) => {
-    let encryptedPW = bcrypt.hash(password, saltRounds)
-    return encryptedPW;
+    let encryptedPssWrd = bcrypt.hash(password, saltRounds)
+    return encryptedPssWrd;
 }
 
-const checkEncryptedPassword = ({enteredPW, encryptedPW}) => {
-    return bcrypt.compare(enteredPW, encryptedPW);
+const checkEncryptedPassword = async ({password, encryptedpw}) => {
+    console.log(password, encryptedpw)
+    return bcrypt.compare(password, encryptedpw);
 }
 
 

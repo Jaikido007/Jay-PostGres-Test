@@ -10,7 +10,7 @@ const createDbUser = ({username, password, result}) => {
 const getUsernameAndPassword = ({username}) => {
     let tableName = 'mytable';
     return client.query(
-        `SELECT id, password, isadmin FROM ${tableName} WHERE username = '${username}'`,
+        `SELECT id, password, isadmin, encryptedpw FROM ${tableName} WHERE username = '${username}'`,
     );
 }
 
@@ -22,10 +22,13 @@ const getUserProfileDetails = ({uid}) => {
 
 }
 
-const updateUserDetails = ({uid, password}) => {
+const updateUserDetails = ({uid, result}) => {
     let tableName = 'mytable';
+    console.log(result)
     return client.query(
-        `UPDATE "${tableName}" SET password = '${password}' WHERE id = ${uid} AND password != '${password}'`
+        `UPDATE "${tableName}" SET encryptedpw = '${result}' WHERE id = ${uid}` 
+        // AND encryptedpw != '${result}'
+
     );
 }
 
